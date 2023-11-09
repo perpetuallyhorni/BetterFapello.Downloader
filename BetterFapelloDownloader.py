@@ -1,8 +1,11 @@
 # TODO: Using Json, create a registry of outstanding ladies the user is interested in (favs kek), keep track of already downloaded content so subsequent downloads only fetch new content.
 # TODO: Add way to blacklist images, this is a broad topic that can include the "trending" images that always make their way into our outstanding lady folder. Could refer to images from the outstanding lady we want in question being allowed in blacklist too. Scope must be determined before working on this functionality.
 # TODO: Add option to auto-check every couple hours or so and to check for new content for all outstanding ladies and per outstanding lady, it should add to json the new images found that aren't downloaded yet so downloads can be easily triggered at the user's will. Of course there should be a toggle to enable immediate downloads.
-
 # TODO: Might be a good idea to move all settings to a new screen.
+
+# BUG: pasting with textfield content selected doesn't remove the selected content, rather it appends the new content at the end, should replace it.
+
+# FEATURE: Select textfield content with Ctrl+A
 
 # Standard library imports
 import sys
@@ -70,9 +73,9 @@ version  = "3.2"
 text_color      = "#F0F0F0"
 app_name_color  = "#ffbf00"
  
-githubme        = "https://github.com/Djdefrag/Fapello.Downloader"
-telegramme      = "https://linktr.ee/j3ngystudio"
-qs_link         = "https://jangystudio.itch.io/qualityscaler"
+githubme        = "https://github.com/perpetuallyhorni/Fapello.Downloader"
+# telegramme      = "https://linktr.ee/j3ngystudio"
+# qs_link         = "https://jangystudio.itch.io/qualityscaler"
 
 log_file_path  = f"{app_name}.log"
 
@@ -189,11 +192,11 @@ def create_text_box(textvariable, width, heigth):
 def opengithub():   
     open_browser(githubme, new=1)
 
-def opentelegram(): 
-    open_browser(telegramme, new=1)
+# def opentelegram(): 
+#     open_browser(telegramme, new=1)
 
-def openqualityscaler():
-    open_browser(qs_link, new=1)
+# def openqualityscaler():
+#     open_browser(qs_link, new=1)
 
 def find_by_relative_path(relative_path):
     base_path = getattr(sys, '_MEIPASS', os_path_dirname(os_path_abspath(__file__)))
@@ -431,35 +434,35 @@ def place_github_button():
     
     git_button.place(relx = 0.055, rely = 0.875, anchor = CENTER)
 
-def place_telegram_button():
-    telegram_button = CTkButton(master     = window, 
-                                image      = logo_telegram,
-                                command    = opentelegram,
-                                width         = 30,
-                                height        = 30,
-                                border_width  = 1,
-                                fg_color      = "transparent",
-                                text_color    = "#C0C0C0",
-                                border_color  = "#404040",
-                                anchor        = "center",                           
-                                text          = "", 
-                                font          = bold11)
-    telegram_button.place(relx = 0.055, rely = 0.95, anchor = CENTER)
+# def place_telegram_button():
+#     telegram_button = CTkButton(master     = window, 
+#                                 image      = logo_telegram,
+#                                 command    = opentelegram,
+#                                 width         = 30,
+#                                 height        = 30,
+#                                 border_width  = 1,
+#                                 fg_color      = "transparent",
+#                                 text_color    = "#C0C0C0",
+#                                 border_color  = "#404040",
+#                                 anchor        = "center",                           
+#                                 text          = "", 
+#                                 font          = bold11)
+#     telegram_button.place(relx = 0.055, rely = 0.95, anchor = CENTER)
  
-def place_qualityscaler_button():
-    qualityscaler_button = CTkButton(master    = window, 
-                                    image      = logo_qs,
-                                    command    = openqualityscaler,
-                                    width         = 30,
-                                    height        = 30,
-                                    border_width  = 1,
-                                    fg_color      = "transparent",
-                                    text_color    = "#C0C0C0",
-                                    border_color  = "#404040",
-                                    anchor        = "center",                           
-                                    text          = "", 
-                                    font          = bold11)
-    qualityscaler_button.place(relx = 0.055, rely = 0.8, anchor = CENTER)
+# def place_qualityscaler_button():
+#     qualityscaler_button = CTkButton(master    = window, 
+#                                     image      = logo_qs,
+#                                     command    = openqualityscaler,
+#                                     width         = 30,
+#                                     height        = 30,
+#                                     border_width  = 1,
+#                                     fg_color      = "transparent",
+#                                     text_color    = "#C0C0C0",
+#                                     border_color  = "#404040",
+#                                     anchor        = "center",                           
+#                                     text          = "", 
+#                                     font          = bold11)
+#     qualityscaler_button.place(relx = 0.055, rely = 0.8, anchor = CENTER)
 
 def open_info_simultaneous_downloads():
     messageBox_title = "Simultaneous downloads"
@@ -564,9 +567,9 @@ class App:
 
 
         place_app_name()
-        place_qualityscaler_button()
+        # place_qualityscaler_button()
         place_github_button()
-        place_telegram_button()
+        # place_telegram_button()
         place_link_textbox()
         place_simultaneous_downloads_textbox()
         place_message_label()             
