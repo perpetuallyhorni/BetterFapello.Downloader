@@ -1,14 +1,20 @@
+# TODO: Using Json, create a registry of outstanding ladies the user is interested in (favs kek), keep track of already downloaded content so subsequent downloads only fetch new content.
+# TODO: Add way to blacklist images, this is a broad topic that can include the "trending" images that always make their way into our outstanding lady folder. Could refer to images from the outstanding lady we want in question being allowed in blacklist too. Scope must be determined before working on this functionality.
+# TODO: Add option to auto-check every couple hours or so and to check for new content for all outstanding ladies and per outstanding lady, it should add to json the new images found that aren't downloaded yet so downloads can be easily triggered at the user's will. Of course there should be a toggle to enable immediate downloads.
 
+# TODO: Might be a good idea to move all settings to a new screen.
 
 # Standard library imports
 import sys
+import json
+
 from threading     import Thread
 from shutil        import rmtree
 from time          import sleep
 from webbrowser    import open as open_browser
 from warnings      import filterwarnings as warnings_filterwarnings
 from bs4           import BeautifulSoup
-
+from tkinter       import PhotoImage
 from multiprocessing import ( 
     Process, 
     freeze_support
@@ -546,12 +552,13 @@ def on_app_close():
 
 class App:
     def __init__(self, window):
-        window.title('')
+        window.title('Fapello Downloader 3.2')
         width        = 500
         height       = 500
         window.geometry("500x500")
         window.minsize(width, height)
-        window.iconbitmap(find_by_relative_path("Assets" + os_separator + "logo.ico"))
+        icon_image = PhotoImage(file=find_by_relative_path("Assets" + os_separator + "logo.png"))
+        window.wm_iconphoto(True, icon_image)
 
         window.protocol("WM_DELETE_WINDOW", on_app_close)
 
@@ -577,9 +584,9 @@ if __name__ == "__main__":
     info_message        = StringVar()
     selected_cpu_number = StringVar()
 
-    selected_url.set("Paste link here https://fapello.com/emily-rat---/")
-    selected_cpu_number.set("4")
-    info_message.set("Hi :)")
+    selected_url.set("")
+    selected_cpu_number.set("32")
+    info_message.set("")
 
     bold8  = CTkFont(family = "Segoe UI", size = 8, weight = "bold")
     bold9  = CTkFont(family = "Segoe UI", size = 9, weight = "bold")
